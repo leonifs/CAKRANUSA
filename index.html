@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAKRANUSA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #08142b;
+      position: relative;
+    }
+
+    /* Overlay gelap */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 10, 25, 0.45);
+      z-index: 1;
+    }
+
+    /* Gradasi emas bawah */
+    body::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 38%;
+      background: linear-gradient(
+        to top,
+        rgba(212, 175, 55, 0.75),
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 78px;
+      background: url('wallpaper.png') center top/cover no-repeat;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .nav-box {
+      width: 100%;
+      background: rgba(7, 20, 52, 0.92);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 22px 38px 22px 60px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 40px;
+      backdrop-filter: blur(8px);
+      box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.18),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-box a {
+      text-decoration: none;
+      color: #d4af37;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-box a:hover {
+      color: #fff3bf;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
+    }
+
+    /* HERO CENTER */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 6rem;
+      color: #f4d77a;
+      letter-spacing: 10px;
+      text-shadow:
+        0 0 10px rgba(255, 215, 120, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.7),
+        0 0 40px rgba(212, 175, 55, 0.5),
+        0 0 70px rgba(255, 223, 120, 0.35);
+      margin-bottom: 20px;
+      animation: glowBlink 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .hero h1::after {
+      content: '✦';
+      position: absolute;
+      top: -18px;
+      right: -25px;
+      font-size: 1.4rem;
+      color: #fff6d6;
+      animation: sparkle 2s linear infinite;
+      opacity: 0.9;
+    }
+
+    .hero h1::before {
+      content: '✦';
+      position: absolute;
+      bottom: 5px;
+      left: -30px;
+      font-size: 1rem;
+      color: #ffe9a6;
+      animation: sparkle 2.8s linear infinite;
+    }
+
+    @keyframes glowBlink {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(255, 215, 120, 0.6),
+          0 0 20px rgba(212, 175, 55, 0.7),
+          0 0 40px rgba(212, 175, 55, 0.5),
+          0 0 70px rgba(255, 223, 120, 0.35);
+        transform: scale(1);
+      }
+
+      50% {
+        text-shadow:
+          0 0 18px rgba(255, 240, 180, 0.95),
+          0 0 35px rgba(255, 215, 0, 0.95),
+          0 0 60px rgba(255, 215, 0, 0.7),
+          0 0 90px rgba(255, 240, 180, 0.55);
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg);
+      }
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #f5f5f5;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        justify-content: center;
+        padding: 0;
+      }
+
+      .nav-box {
+        gap: 18px;
+        padding: 18px 22px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+        letter-spacing: 5px;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <header>
+      <nav class="nav-box">
+        <a href="#">BERANDA</a>
+        <a href="#">CAKRALAND</a>
+        <a href="#">CAKRASWARA</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>CAKRANUSA</h1>
+      <p>Merangkai Cerita Nusantara dalam Satu Cakrawala.</p>
+    </section>
+
+  </div>
+
+</body>
+</html>

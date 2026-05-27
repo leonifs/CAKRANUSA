@@ -84,30 +84,31 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 60px;
+      padding-top: 0;
       background-image: url('wallpaper.png');
-      background-position: center top;
+      background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
     }
+    }
 
     /* HEADER */
     header {
+      isolation: isolate;
       width: 100%;
       display: flex;
       justify-content: flex-end;
       padding: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 2147483647;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 999999999999 !important;
       opacity: 1 !important;
       visibility: visible !important;
-      transform: translateY(0) !important;
-      transition: none;
-      isolation: isolate;
+      transform: none !important;
+      transition: none !important;
       pointer-events: auto;
     }
 
@@ -159,13 +160,14 @@
     .hero {
       position: relative;
       z-index: 4;
-      flex: 1;
+      width: 100%;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: 120px 20px 80px;
       margin-top: 0;
     }
 
@@ -275,7 +277,7 @@
     .gold-section {
       margin-top: 0;
       position: relative;
-      z-index: 1;
+      z-index: 0 !important;
       width: 100%;
       min-height: 100vh;
       background: linear-gradient(
@@ -430,7 +432,7 @@
 
   <div class="wrapper">
 
-    <header>
+    <header id="fixed-header">
       <nav class="nav-box">
         <img src="logo.png" alt="Logo" class="logo">
 
@@ -446,8 +448,6 @@
       <h1>CAKRANUSA</h1>
       <p>Merangkai Cerita Nusantara dalam Satu Cakrawala.</p>
     </section>
-
-    </div>
 
   <!-- HALAMAN BARU DI BAWAH GRADASI -->
   <section class="gold-section">
@@ -481,7 +481,20 @@
     </div>
   </section>
 
+  </div>
+
   <script>
+    const fixedHeader = document.getElementById('fixed-header');
+
+    window.addEventListener('scroll', () => {
+      fixedHeader.style.position = 'fixed';
+      fixedHeader.style.top = '0';
+      fixedHeader.style.left = '0';
+      fixedHeader.style.right = '0';
+      fixedHeader.style.zIndex = '999999999999';
+      fixedHeader.style.transform = 'none';
+    });
+
     const counters = document.querySelectorAll('.stat-number');
 
     const runCounter = (counter) => {
